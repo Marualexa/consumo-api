@@ -134,7 +134,16 @@ async function getTrendingMoviesPreview() {
 }
 
 async function getCategegoriesPreview() {
-    const { data } = await api('genre/movie/list');
+
+    const [_, languageId] = location.hash.split('=');
+    console.log('este es el lenguaje', languageId)
+    const { data } = await api('genre/movie/list', {
+        params: {
+            language: languageId,
+        },
+    });
+
+
     const categories = data.genres;
 
     createCategories(categories, categoriesPreviewList);
@@ -299,12 +308,41 @@ function getLikedMovies() {
 
 }
 
-async function getCategoriLanguaes() {
-    const { data } = await api('configuration/languages');
+async function getCategoryLanguages() {
+    const { data, status } = await api('configuration/languages');
 
-    console.log(data);
+    if (status === 200) {
+        const itemLang = data.map(item => {
+            console.log('iso', item.iso_639_1)
+            console.log('name', item.name)
+            const optionLang = document.createElement('option');
+            optionLang.setAttribute('value', item.iso_639_1);
+            optionLang.text = item.english_name;
+
+            categoriLanguages.appendChild(optionLang);
+
+        });
+        
+    }
+    else {
+        //manejar error
+
+    }
+    
+
 }
 
-getCategoriLanguaes();
+categoriLanguages.addEventListener('change', (event) => {
+    console.log('este es el evento', event.target.value);
+
+    location.hash = '#lang=' + event.target.value;
+});
+
+
+
+
+  
+
+getCategoryLanguages();
 getTrendingMoviesPreview();
 // getCategoriesPreview();

@@ -91,6 +91,11 @@ html {
   
   
   /* Shared */
+.lange {
+  background-color: var(--purple-light-2);
+  width: 20px;
+}
+
   .header-container, .trendingPreview-header, .categoriesPreview-container, .liked-header {
     padding: 0 24px;
   }

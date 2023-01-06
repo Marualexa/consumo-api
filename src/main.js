@@ -1,12 +1,43 @@
+// Data 
+
 const api = axios.create({
     baseURL: 'https://api.themoviedb.org/3/',
     headers: {
         'Content-Type': 'application/json;charset=utf-8',
     },
     params: {
-        'api_key': 'b3752885e967c8479c86bee6e62eccb6'
+        'api_key': 'b3752885e967c8479c86bee6e62eccb6',
     }
 });
+
+
+function likedMoviesList() {
+    const item = JSON.parse(localStorage.getItem('liked_movies'));
+    let movies;
+
+    if (item) {
+        movies = item;
+    } else {
+        movies = {};
+    }
+
+    return movies;
+}
+
+function likedMovie(movie) {
+    const likedMovies = likedMoviesList();
+
+    if (likedMovies[movie.id]) {
+        likedMovies[movie.id] = undefined;
+    } else {
+        likedMovies[movie.id] = movie;
+    }
+
+    localStorage.setItem('liked_movies', JSON.stringify(likedMovies));
+
+    getTrendingMoviesPreview()
+    getLikedMovies()
+}
 
 // Utils
 
@@ -55,9 +86,10 @@ function createMovies(
 
         const movieBtn = document.createElement('button');
         movieBtn.classList.add('movie-btn');
+        likedMoviesList()[movie.id] && movieBtn.classList.add('movie-btn--liked');
         movieBtn.addEventListener('click', () => {
             movieBtn.classList.toggle('movie-btn--liked');
-            // DEBERIAMOS AGREGAR LA PELICULA A LS
+            likedMovie(movie);
         });
 
         if (lazyLoad) {
@@ -258,5 +290,21 @@ async function getRelatedMoviesId(id) {
     createMovies(relatedMovies, relatedMoviesContainer);
 }
 
+function getLikedMovies() {
+    const likedMovies = likedMoviesList();
+    const moviesArray = Object.values(likedMovies);
+
+
+    createMovies(moviesArray, likedMoviesListArticle, { lazyLoad: true, clean: true });
+
+}
+
+async function getCategoriLanguaes() {
+    const { data } = await api('configuration/languages');
+
+    console.log(data);
+}
+
+getCategoriLanguaes();
 getTrendingMoviesPreview();
 // getCategoriesPreview();

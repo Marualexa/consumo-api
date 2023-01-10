@@ -60,9 +60,10 @@ function homePage() {
 
   trendingPreviewSection.classList.remove('inactive');
   categoriesPreviewSection.classList.remove('inactive');
-  likedMoviesSection.classList.remove('inactive');
+  likedMoviesSection.classList.add('inactive');
   genericSection.classList.add('inactive');
   movieDetailSection.classList.add('inactive');
+  modalError.classList.add('inactive');
 
   getTrendingMoviesPreview();
   getCategegoriesPreview();
@@ -86,6 +87,7 @@ function categoriesPage() {
   likedMoviesSection.classList.add('inactive');
   genericSection.classList.remove('inactive');
   movieDetailSection.classList.add('inactive');
+  modalError.classList.add('inactive');
 
   // ['#category', 'id-name']
   const [_, categoryData] = location.hash.split('=');
@@ -114,10 +116,11 @@ function movieDetailsPage() {
   likedMoviesSection.classList.add('inactive');
   genericSection.classList.add('inactive');
   movieDetailSection.classList.remove('inactive');
+  modalError.classList.add('inactive');
 
   // ['#movie', '234567']
   const [_, movieId] = location.hash.split('=');
-  
+
   getMovieById(movieId);
 }
 
@@ -137,6 +140,8 @@ function searchPage() {
   likedMoviesSection.classList.add('inactive');
   genericSection.classList.remove('inactive');
   movieDetailSection.classList.add('inactive');
+  modalError.classList.add('inactive');
+
 
   // ['#search', 'platzi']
   const [_, query] = location.hash.split('=');
@@ -161,6 +166,7 @@ function trendsPage() {
   likedMoviesSection.classList.add('inactive');
   genericSection.classList.remove('inactive');
   movieDetailSection.classList.add('inactive');
+  modalError.classList.add('inactive');
 
   headerCategoryTitle.innerHTML = 'Tendencias';
 
@@ -168,3 +174,23 @@ function trendsPage() {
 
   infiniteScroll = getPaginatedTrendingMovies;
 }
+
+function errorNavi() {
+  modalError.classList.add('inactive');
+  modalError.classList.remove('inactive');
+}
+
+closeButon.addEventListener("click", () => {
+  console.log('buton' ,closeButon)
+  modalError.classList.add("inactive")
+})
+
+likedMoviesSection.addEventListener('click', () => {
+  linkeButon.classList.remove('inactive')
+})
+
+
+
+
+
+

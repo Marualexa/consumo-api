@@ -6,7 +6,7 @@ const api = axios.create({
         'Content-Type': 'application/json;charset=utf-8',
     },
     params: {
-        'api_key': 'b3752885e967c8479c86bee6e62eccb6',
+        'api_key': 'b3752885e967c8479c86bee6e62eccb6',       
     }
 });
 
@@ -126,12 +126,17 @@ function createCategories(categories, container) {
 // Llamados a la API
 
 async function getTrendingMoviesPreview() {
-    const { data } = await api('trending/movie/day');
-    const movies = data.results;
-    console.log(movies)
+    const { data, status } = await api('trending/movie/day');
+    if (status === 200) {
+        const movies = data.results;
+        console.log(movies)
 
-    createMovies(movies, trendingMoviesPreviewList, true);
-}
+        createMovies(movies, trendingMoviesPreviewList, true);
+    } else {
+        return errorNavi();
+
+    }
+};
 
 async function getCategegoriesPreview() {
 
@@ -312,23 +317,40 @@ async function getCategoryLanguages() {
     const { data, status } = await api('configuration/languages');
 
     if (status === 200) {
-        const itemLang = data.map(item => {
-            console.log('iso', item.iso_639_1)
-            console.log('name', item.name)
+        const selecLang = data.filter(item => {
+            if (item.english_name === 'English' || item.english_name === 'Spanish' || item.english_name === 'Romanian') {
+                return item;
+            }
+        })
+
+        console.log('filter', selecLang);
+        const itemLang = selecLang.map(item => {
             const optionLang = document.createElement('option');
             optionLang.setAttribute('value', item.iso_639_1);
             optionLang.text = item.english_name;
 
+            if (item.english_name === 'English') {
+                optionLang.text = getFlagEmoji('US');
+            }
+            if (item.english_name === 'Spanish') {
+                optionLang.text = getFlagEmoji('ES');
+            }
+            if (item.english_name === 'Romanian') {
+                optionLang.text = getFlagEmoji('RO');
+            }
+
+
             categoriLanguages.appendChild(optionLang);
 
         });
-        
-    }
-    else {
-        //manejar error
 
     }
-    
+    else {
+        !status === 200
+        return error
+
+    }
+
 
 }
 
@@ -338,11 +360,16 @@ categoriLanguages.addEventListener('change', (event) => {
     location.hash = '#lang=' + event.target.value;
 });
 
+function getFlagEmoji(countryCode) {
+    const codePoints = countryCode
+        .toUpperCase()
+        .split('')
+        .map(char => 127397 + char.charCodeAt());
+    return String.fromCodePoint(...codePoints);
+}
 
-
-
-  
 
 getCategoryLanguages();
 getTrendingMoviesPreview();
 // getCategoriesPreview();
+

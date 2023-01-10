@@ -5,7 +5,9 @@ const categoriesPreviewSection = document.querySelector('#categoriesPreview');
 const genericSection = document.querySelector('#genericList');
 const movieDetailSection = document.querySelector('#movieDetail');
 const likedMoviesSection = document.querySelector('#like');
+const linkeButon = document.querySelector('#butonFvory');
 const categoriLanguages = document.querySelector('#languages');
+
 
 // Lists & Containers
 const searchForm = document.querySelector('#searchForm');
@@ -28,3 +30,10 @@ const trendingBtn = document.querySelector('.trendingPreview-btn');
 const movieDetailTitle = document.querySelector('.movieDetail-title');
 const movieDetailDescription = document.querySelector('.movieDetail-description');
 const movieDetailScore = document.querySelector('.movieDetail-score');
+
+const modalError = document.querySelector('#modal')
+const closeButon = document.querySelector('#modal__container--close');
+
+// Menu desplegable moviles
+const itemMenu = document.querySelector('.item-menu');
+const navMenu = document.querySelector('.toggleNav');

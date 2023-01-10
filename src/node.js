@@ -33,7 +33,4 @@ const movieDetailScore = document.querySelector('.movieDetail-score');
 
 const modalError = document.querySelector('#modal')
 const closeButon = document.querySelector('#modal__container--close');
-
-// Menu desplegable moviles
-const itemMenu = document.querySelector('.item-menu');
-const navMenu = document.querySelector('.toggleNav');
+const flexNav = document.querySelector('.flex-nav')

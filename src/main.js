@@ -6,7 +6,7 @@ const api = axios.create({
         'Content-Type': 'application/json;charset=utf-8',
     },
     params: {
-        'api_key': 'b3752885e967c8479c86bee6e62eccb6',       
+        'api_key': 'b3752885e967c8479c86bee6e62eccb6',
     }
 });
 
@@ -150,6 +150,8 @@ async function getCategegoriesPreview() {
 
 
     const categories = data.genres;
+
+    getTravelCategory(categories);
 
     createCategories(categories, categoriesPreviewList);
 }
@@ -367,6 +369,27 @@ function getFlagEmoji(countryCode) {
         .map(char => 127397 + char.charCodeAt());
     return String.fromCodePoint(...codePoints);
 }
+
+function getTravelCategory(categories) {
+
+    categories.forEach(category => {
+        const liItem = document.createElement('li');
+        liItem.classList.add('category-container');
+
+        const ulContainer = document.querySelector('#travelCtegory');
+        
+        liItem.classList.add('category-title');
+        liItem.setAttribute('id', 'id' + category.id);
+        liItem.addEventListener('click', () => {
+            location.hash = `#category=${category.id}-${category.name}`;
+        });
+        const categoryTitleText = document.createTextNode(category.name);
+        liItem.appendChild(categoryTitleText);
+
+        ulContainer.appendChild(liItem);
+        
+    });
+};
 
 
 getCategoryLanguages();

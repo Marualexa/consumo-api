@@ -15,11 +15,11 @@
 </head>
 
 <body>
-    <section class="loader">
+    <!-- <section class="loader">
         <div></div>
         <div></div>
         <div></div>
-    </section>
+    </section> -->
 
     <section id="modal" class="modal-style">
         <div class="modal__container">
@@ -40,6 +40,22 @@
             <button id="searchBtn">🔍</button>
         </form>
     </header>
+
+    <!-- test -->
+
+    <nav class="flex-nav inactive">
+        <a href="#" class="toggleNav">☰ Menu</a>
+        <ul id="travelCtegory">
+            <!-- <li><a href="#">Item 01</a></li>
+            <li><a href="#">Item 02</a></li>
+            <li><a href="#">Item 03</a></li>
+            <li><a href="#">Item 04</a></li>
+            <li><a href="#">Item 05</a></li>
+            <li><a href="#">Item 06</a></li> -->
+        </ul>
+    </nav>
+
+    <!-- test -->
 
     <section id="like" class="liked-container">
         <div class="liked-header">
@@ -114,6 +130,16 @@
     <script src="./src/node.js"></script>
     <script src="./src/main.js"></script>
     <script src="./src/navigation.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>
+
+        $(function () {
+            $('.toggleNav').on('click', function () {
+                $('.flex-nav ul').toggleClass('open');
+            });
+        });
+
+    </script>
 </body>
 
 </html>

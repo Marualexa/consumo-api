@@ -64,6 +64,7 @@ function homePage() {
   genericSection.classList.add('inactive');
   movieDetailSection.classList.add('inactive');
   modalError.classList.add('inactive');
+  flexNav.classList.remove('inactive');
 
   getTrendingMoviesPreview();
   getCategegoriesPreview();
@@ -88,6 +89,7 @@ function categoriesPage() {
   genericSection.classList.remove('inactive');
   movieDetailSection.classList.add('inactive');
   modalError.classList.add('inactive');
+  flexNav.classList.add('inactive');
 
   // ['#category', 'id-name']
   const [_, categoryData] = location.hash.split('=');
@@ -117,6 +119,7 @@ function movieDetailsPage() {
   genericSection.classList.add('inactive');
   movieDetailSection.classList.remove('inactive');
   modalError.classList.add('inactive');
+  flexNav.classList.add('inactive');
 
   // ['#movie', '234567']
   const [_, movieId] = location.hash.split('=');
@@ -141,6 +144,7 @@ function searchPage() {
   genericSection.classList.remove('inactive');
   movieDetailSection.classList.add('inactive');
   modalError.classList.add('inactive');
+  flexNav.classList.add('inactive');
 
 
   // ['#search', 'platzi']
@@ -167,6 +171,7 @@ function trendsPage() {
   genericSection.classList.remove('inactive');
   movieDetailSection.classList.add('inactive');
   modalError.classList.add('inactive');
+  flexNav.classList.add('inactive');
 
   headerCategoryTitle.innerHTML = 'Tendencias';
 

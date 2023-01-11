@@ -33,4 +33,5 @@ const movieDetailScore = document.querySelector('.movieDetail-score');
 
 const modalError = document.querySelector('#modal')
 const closeButon = document.querySelector('#modal__container--close');
-const flexNav = document.querySelector('.flex-nav')
+const flexNav = document.querySelector('.flex-nav');
+const butonFvori = document.querySelector('#buton-favoti');

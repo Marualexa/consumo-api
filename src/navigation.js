@@ -65,6 +65,7 @@ function homePage() {
   movieDetailSection.classList.add('inactive');
   modalError.classList.add('inactive');
   flexNav.classList.remove('inactive');
+  butonFvori.classList.remove('inactive');
 
   getTrendingMoviesPreview();
   getCategegoriesPreview();
@@ -90,6 +91,8 @@ function categoriesPage() {
   movieDetailSection.classList.add('inactive');
   modalError.classList.add('inactive');
   flexNav.classList.add('inactive');
+  butonFvori.classList.add('inactive');
+  categoriLanguages.classList.add('inactive');
 
   // ['#category', 'id-name']
   const [_, categoryData] = location.hash.split('=');
@@ -120,6 +123,8 @@ function movieDetailsPage() {
   movieDetailSection.classList.remove('inactive');
   modalError.classList.add('inactive');
   flexNav.classList.add('inactive');
+  butonFvori.classList.add('inactive');
+  categoriLanguages.classList.add('inactive');
 
   // ['#movie', '234567']
   const [_, movieId] = location.hash.split('=');
@@ -145,6 +150,8 @@ function searchPage() {
   movieDetailSection.classList.add('inactive');
   modalError.classList.add('inactive');
   flexNav.classList.add('inactive');
+  butonFvori.classList.add('inactive');
+  categoriLanguages.classList.add('inactive');
 
 
   // ['#search', 'platzi']
@@ -172,6 +179,8 @@ function trendsPage() {
   movieDetailSection.classList.add('inactive');
   modalError.classList.add('inactive');
   flexNav.classList.add('inactive');
+  butonFvori.classList.add('inactive');
+  categoriLanguages.classList.add('inactive');
 
   headerCategoryTitle.innerHTML = 'Tendencias';
 
@@ -191,7 +200,7 @@ closeButon.addEventListener("click", () => {
 })
 
 likedMoviesSection.addEventListener('click', () => {
-  linkeButon.classList.remove('inactive')
+  
 })
 
 

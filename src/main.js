@@ -290,6 +290,8 @@ async function getMovieById(id) {
       url(${movieImgUrl})
     `;
 
+    headerSection.classList.add('imagen-desc')
+    
     movieDetailTitle.textContent = movie.title;
     movieDetailDescription.textContent = movie.overview;
     movieDetailScore.textContent = movie.vote_average;
@@ -391,6 +393,32 @@ function getTravelCategory(categories) {
     });
 };
 
+function getFavoritSeccion() {
+    const butonFavorite = document.createElement('button');
+    butonFavorite.innerText = 'Favoritos';
+    butonFavorite.classList.add('favotite-buton');
+
+    const botonClose = document.createElement('button')
+    botonClose.innerText = 'Closet Favorito';
+    botonClose.classList.add('favotite-buton')
+
+    butonFvori.appendChild(butonFavorite);
+    butonFvori.appendChild(botonClose);
+    
+
+    butonFavorite.addEventListener('click', (ev) => {
+        console.log('click', butonFavorite)
+        ev.preventDefault();
+        likedMoviesSection.classList.remove('inactive');
+    });
+
+    botonClose.addEventListener('click', (ev) => {
+        ev.preventDefault();
+        likedMoviesSection.classList.add('inactive');
+    })
+
+}
+getFavoritSeccion()
 
 getCategoryLanguages();
 getTrendingMoviesPreview();

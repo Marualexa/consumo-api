@@ -35,3 +35,6 @@ const modalError = document.querySelector('#modal')
 const closeButon = document.querySelector('#modal__container--close');
 const flexNav = document.querySelector('.flex-nav');
 const butonFvori = document.querySelector('#buton-favoti');
+const containerAlert = document.querySelector('#container-alert');
+
+const btnCloset = document.querySelector('.product-detail-close');

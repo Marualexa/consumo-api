@@ -365,8 +365,7 @@ async function getCategoryLanguages() {
 
     }
 
-
-}
+};
 
 categoriLanguages.addEventListener('change', (event) => {
     console.log('este es el evento', event.target.value);
@@ -404,6 +403,7 @@ function getTravelCategory(categories) {
 };
 
 function getFavoritSeccion() {
+
     const butonFavorite = document.createElement('button');
     butonFavorite.innerText = 'Favoritos';
     butonFavorite.classList.add('favotite-buton');
@@ -417,9 +417,22 @@ function getFavoritSeccion() {
     
 
     butonFavorite.addEventListener('click', (ev) => {
-        console.log('click', butonFavorite)
         ev.preventDefault();
         likedMoviesSection.classList.remove('inactive');
+
+        const likedMovies = likedMoviesList()
+        if (likedMovies === '') {
+            return 
+        }
+
+        console.log('liked', likedMovies)
+
+        const arrayMovies = Object.keys(likedMovies);
+
+        if(arrayMovies.length == 0) {
+            console.log('array vacio', arrayMovies)
+            return containerAlert.classList.remove('inactive')
+        }        
     });
 
     botonClose.addEventListener('click', (ev) => {
@@ -427,7 +440,12 @@ function getFavoritSeccion() {
         likedMoviesSection.classList.add('inactive');
     })
 
-}
+};
+
+btnCloset.addEventListener('click', () => {
+    containerAlert.classList.add('inactive');
+});
+
 getFavoritSeccion()
 
 getCategoryLanguages();

@@ -27,10 +27,6 @@
   --font-weight-text2: 500;
 }
 
-html {
-  background-color: var(--purple-medium-3);
-}
-
 body {
   background-color: var(--purple-light-1);
   color: var(--purple-dark-2);
@@ -521,19 +517,6 @@ footer {
   max-height: 187.5px;
 }
 
-
-/* Footer */
-footer {
-  background-color: var(--purple-medium-3);
-  color: var(--purple-light-2);
-  text-align: center;
-  height: 48px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-
 /* Navigation */
 .inactive {
   display: none !important;
@@ -697,6 +680,52 @@ footer {
   color: var(--purple-light-1);
 }
 
+#container-alert {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.div-alert {
+  background-color: var(--purple-medium-2);
+  width: 40%;
+  height: 50%;
+  display: grid;
+  place-items: center;
+  position: fixed;
+  padding: 40px;
+  margin-top: 130px;
+  border-radius: 15%;
+  z-index: 10;
+}
+
+#alert-module {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+}
+
+.title-alert {
+  color: var(--purple-light-1);
+  text-align: center;
+}
+
+.product-detail-close {
+  width: 14px;
+  height: 14px;
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  z-index: 2;
+  padding: 12px;
+  border-radius: 50%;
+}
+
+.product-detail-close:hover {
+  cursor: pointer;
+}
 
 @media only screen and (min-width: 350px) and (max-width: 750px) {
 
@@ -709,21 +738,21 @@ footer {
     background-color: var(--purple-light-1);
     position: absolute;
     z-index: 3;
-  
+
     animation: loader 3s linear forwards;
   }
-  
+
   @keyframes loader {
     0% {
       opacity: 1;
       visibility: visible;
     }
-  
+
     95% {
       opacity: 1;
       visibility: visible;
     }
-  
+
     100% {
       opacity: 0;
       visibility: hidden;
@@ -834,8 +863,10 @@ footer {
     height: 32px;
     display: flex;
     align-content: center;
-    justify-content: space-around;
+    justify-content: space-between;
     margin-bottom: 58px;
+    margin-top: 30px;
+    padding: 0 24px;
   }
 
   .favotite-buton {
@@ -846,6 +877,11 @@ footer {
     font-size: 14px;
     cursor: pointer;
     border-radius: 8px;
+  }
+
+  .div-alert {
+    width: 60%;
+    height: 50%;
   }
 
 }

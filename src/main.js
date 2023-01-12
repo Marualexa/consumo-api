@@ -279,7 +279,17 @@ async function getPaginatedTrendingMovies() {
 async function getMovieById(id) {
     const { data: movie } = await api('movie/' + id);
 
-    const movieImgUrl = 'https://image.tmdb.org/t/p/w500' + movie.poster_path;
+    let movieImgUrl = '';
+
+
+    if (window.screen.availWidth < 700) {
+        movieImgUrl = 'https://image.tmdb.org/t/p/w500' + movie.poster_path;
+    } else {
+        movieImgUrl = 'https://image.tmdb.org/t/p/original' + movie.poster_path;
+    }
+
+    console.log('este es el ancho', window.screen.availWidth)
+    console.log('este es el alto', window.screen.availHeight)   
     console.log(movieImgUrl)
     headerSection.style.background = `
       linear-gradient(

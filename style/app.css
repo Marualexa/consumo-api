@@ -440,10 +440,9 @@ footer {
 
 /* Movie Detail */
 .imagen-desc {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 500px;
+  animation: fadeIn .3s ease-in-out forwards;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 .movieDetail-container {
@@ -454,7 +453,6 @@ footer {
   z-index: 1;
   position: absolute;
   background-color: var(--purple-light-1);
-  width: 500px;
 }
 
 .movieDetail-title {
@@ -495,7 +493,7 @@ footer {
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
-  width: 450px;
+  width: calc(100vw - 24px);
   padding-bottom: 16px;
   max-height: 225px;
 }
@@ -591,7 +589,7 @@ footer {
 
 .loader {
   width: 100%;
-  height: 100%;
+  height: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -599,7 +597,7 @@ footer {
   position: absolute;
   z-index: 3;
 
-  animation: loader 2s linear forwards;
+  animation: loader 3s linear forwards;
 }
 
 @keyframes loader {
@@ -620,27 +618,24 @@ footer {
 }
 
 .loader div {
-  background-color: var(--green);
-  width: 40px;
-  height: 40px;
-  border-radius: 50px;
+  width: 50px;
+  height: 50px;
   margin: 10px;
-
   transform: scale(0);
 
-  animation: scaling 2s ease-in-out infinite;
+  animation: scaling 3s ease-in-out infinite;
 }
 
 .loader div:nth-child(1) {
-  animation-delay: 0.2s;
+  animation-delay: 0.3s;
 }
 
 .loader div:nth-child(2) {
-  animation-delay: 0.4s;
+  animation-delay: 0.5s;
 }
 
 .loader div:nth-child(3) {
-  animation-delay: 0.6s;
+  animation-delay: 0.8s;
 }
 
 @keyframes scaling {
@@ -683,6 +678,7 @@ footer {
   align-content: center;
   justify-content: space-around;
   margin-bottom: 58px;
+  margin-top: 30px;
 }
 
 .favotite-buton {
@@ -697,6 +693,36 @@ footer {
 
 
 @media only screen and (min-width: 350px) and (max-width: 750px) {
+
+  .loader {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--purple-light-1);
+    position: absolute;
+    z-index: 3;
+  
+    animation: loader 3s linear forwards;
+  }
+  
+  @keyframes loader {
+    0% {
+      opacity: 1;
+      visibility: visible;
+    }
+  
+    95% {
+      opacity: 1;
+      visibility: visible;
+    }
+  
+    100% {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
 
   .flex-nav li {
     flex-basis: 100%;
@@ -797,68 +823,23 @@ footer {
     width: 100%;
   }
 
-  .movieDetail-container {
-    border-top-left-radius: 16px;
-    border-top-right-radius: 16px;
-    padding: 32px 24px;
-    margin-top: 403px;
-    z-index: 1;
-    position: absolute;
-    background-color: var(--purple-light-1);
+  #buton-favoti {
+    width: 100%;
+    height: 32px;
+    display: flex;
+    align-content: center;
+    justify-content: space-around;
+    margin-bottom: 58px;
   }
 
-  .movieDetail-score {
-    display: inline-block;
-    text-align: right;
-    width: 18%;
-    font-weight: var(--font-weight-title2);
-  }
-
-  .movieDetail-score::before {
-    content: '★';
-    color: var(--yellow);
-    padding-right: 4px;
-  }
-
-  .movieDetail-description {
-    margin: 0 0 24px 0;
-  }
-
-  .relatedMovies-container {
-    margin-top: 24px;
-    height: 257px;
-  }
-
-  .relatedMovies-title {
-    margin-bottom: 16px;
-  }
-
-  .relatedMovies-scrollContainer {
-    padding-bottom: 16px;
-    max-height: 225px;
-  }
-
-  .relatedMovies-scrollContainer .movie-container {
-    display: inline-block;
-    margin-right: 8px;
-  }
-
-  .relatedMovies-scrollContainer .movie-container--loading {
-    width: 125px;
-    min-width: 125px;
-    max-width: 125px;
-    height: 187.5px;
-    min-height: 187.5px;
-    max-height: 187.5px;
-  }
-
-  .relatedMovies-scrollContainer .movie-img {
-    width: 125px;
-    min-width: 125px;
-    max-width: 125px;
-    height: 187.5px;
-    min-height: 187.5px;
-    max-height: 187.5px;
+  .favotite-buton {
+    background-color: var(--purple-dark-1);
+    border: none;
+    color: var(--green);
+    font-weight: var(--font-weight-text2);
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 8px;
   }
 
 }

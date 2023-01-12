@@ -199,9 +199,6 @@ closeButon.addEventListener("click", () => {
   modalError.classList.add("inactive")
 })
 
-likedMoviesSection.addEventListener('click', () => {
-  
-})
 
 
 

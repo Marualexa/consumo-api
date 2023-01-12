@@ -676,9 +676,10 @@ footer {
   height: 32px;
   display: flex;
   align-content: center;
-  justify-content: space-around;
+  justify-content: space-between;
   margin-bottom: 58px;
   margin-top: 30px;
+  padding: 0 24px;
 }
 
 .favotite-buton {
@@ -689,6 +690,11 @@ footer {
   font-size: 14px;
   cursor: pointer;
   border-radius: 8px;
+}
+
+.favotite-buton:hover {
+  background-color: var(--purple-medium-3);
+  color: var(--purple-light-1);
 }
 
 

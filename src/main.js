@@ -409,7 +409,7 @@ function getFavoritSeccion() {
     butonFavorite.classList.add('favotite-buton');
 
     const botonClose = document.createElement('button')
-    botonClose.innerText = 'Closet Favorito';
+    botonClose.innerText = 'Cerrar favoritos';
     botonClose.classList.add('favotite-buton')
 
     butonFvori.appendChild(butonFavorite);
